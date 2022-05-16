@@ -1,0 +1,58 @@
+<form data-testid="pet-form" (ngSubmit)="submitForm()" [formGroup]="petForm">
+  <mat-card>
+    <mat-card-title>Pet Form</mat-card-title>
+    <mat-card-content>
+      <input data-testid="id-field" type="hidden" formControlName="id" />
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input
+          data-testid="name-field"
+          type="text"
+          matInput
+          formControlName="name"
+          autocomplete="off"
+        />
+        <mat-error
+          *ngIf="
+            (nameCtrl.touched || nameCtrl.dirty) &&
+            nameCtrl.hasError('required')
+          "
+          >Name is required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-label class="radio-group-label">Status</mat-label>
+      <mat-radio-group ngDefaultControl formControlName="status">
+        <mat-radio-button [value]="petStatuses.Available">{{
+          petStatuses.Available
+        }}</mat-radio-button>
+        <mat-radio-button [value]="petStatuses.Pending">{{
+          petStatuses.Pending
+        }}</mat-radio-button>
+        <mat-radio-button [value]="petStatuses.Sold">{{
+          petStatuses.Sold
+        }}</mat-radio-button>
+      </mat-radio-group>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        data-testid="submit-button"
+        type="submit"
+        mat-button
+        color="primary"
+        [disabled]="petForm.invalid"
+      >
+        Submit
+      </button>
+      <button
+        data-testid="reset-button"
+        type="button"
+        mat-button
+        color="accent"
+        (click)="reset()"
+      >
+        Reset
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>

@@ -1,0 +1,23 @@
+<mat-card>
+  <mat-card-title>Pet Filter</mat-card-title>
+  <mat-card-content>
+    <mat-radio-group>
+      <mat-radio-button
+        [value]="petStatuses.Available"
+        (change)="changed.emit($event.value)"
+        checked="true"
+        >{{ petStatuses.Available }}</mat-radio-button
+      >
+      <mat-radio-button
+        [value]="petStatuses.Pending"
+        (change)="changed.emit($event.value)"
+        >{{ petStatuses.Pending }}</mat-radio-button
+      >
+      <mat-radio-button
+        [value]="petStatuses.Sold"
+        (change)="changed.emit($event.value)"
+        >{{ petStatuses.Sold }}</mat-radio-button
+      >
+    </mat-radio-group>
+  </mat-card-content>
+</mat-card>

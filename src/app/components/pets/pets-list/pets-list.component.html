@@ -1,0 +1,37 @@
+<mat-card>
+  <mat-card-title>
+    Pet List
+    <mat-icon (click)="addClicked.emit(); petsList.deselectAll()"
+      >add_box</mat-icon
+    >
+    <mat-icon (click)="refreshClicked.emit(); petsList.deselectAll()"
+      >refresh</mat-icon
+    >
+  </mat-card-title>
+  <mat-card-content>
+    <section class="list-row list-header">
+      <div>ID</div>
+      <div>Name</div>
+    </section>
+    <mat-selection-list
+      #petsList
+      [multiple]="false"
+      (selectionChange)="
+        selectionChanged.emit(petsList.selectedOptions.selected[0].value.id)
+      "
+    >
+      <mat-list-option *ngFor="let pet of pets" [value]="pet">
+        <section class="list-row list-item">
+          <div>{{ pet.id }}</div>
+          <div>{{ pet.name }}</div>
+          <div class="actions">
+            <mat-icon
+              (click)="deleteClicked.emit(pet); $event.stopPropagation()"
+              >delete_forever</mat-icon
+            >
+          </div>
+        </section>
+      </mat-list-option>
+    </mat-selection-list>
+  </mat-card-content>
+</mat-card>

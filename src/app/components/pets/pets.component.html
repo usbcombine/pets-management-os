@@ -1,0 +1,18 @@
+<os-pets-filter (changed)="selectPetsStatus($event)"></os-pets-filter>
+<section class="pets">
+  <section class="pets__list">
+    <os-pets-list
+      [pets]="(pets$ | async) || []"
+      (selectionChanged)="setAddNewPet(false); selectPet($event)"
+      (addClicked)="setAddNewPet(true); selectPet(null)"
+      (refreshClicked)="setAddNewPet(false); selectPet(null)"
+      (deleteClicked)="deletePet($event)"
+    ></os-pets-list>
+  </section>
+  <section class="pets__details" *ngIf="selectedPet$ | async as pet">
+    <os-pet-details [pet]="pet" (save)="savePet($event)"></os-pet-details>
+  </section>
+  <section class="pets__details" *ngIf="addNewPet">
+    <os-pet-details (save)="savePet($event)"></os-pet-details>
+  </section>
+</section>

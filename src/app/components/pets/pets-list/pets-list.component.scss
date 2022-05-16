@@ -1,0 +1,20 @@
+.list-row {
+    display: flex;
+    width: 100%;
+    div {
+        width: 45%;
+    }
+}
+
+.list-header {
+    padding: 0 2rem 0 1rem;
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+.list-item {
+    div.actions {
+        width: 10%;
+        text-align: right;
+    }
+}
